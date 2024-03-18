@@ -2,6 +2,39 @@
     font-size: 16px;
 }
 
+body {
+    margin: 0%;
+}
+
 button {
     all: unset;
+}
+
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 3rem;
+    justify-content: space-between;
+}
+
+header > button {
+    flex: 0 0 3rem;
+}
+
+header > button:hover {
+    background-color: #bbbbbb;
+}
+
+header > button:active {
+    background-color: #888888;
+}
+
+header > * {
+    text-align: center;
+    font-size: 2rem;
+}
+
+#header-logo {
+    display: grid;
+    align-items: center;
 }
