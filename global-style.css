@@ -1,5 +1,5 @@
 :root {
-    font-size: 16px;
+    font-size: 8px;
 }
 
 body {
@@ -10,19 +10,29 @@ button {
     all: unset;
 }
 
-nav li {
-    all: unset;
+nav li > a {
+    color: unset;
+    cursor: pointer;
+    text-decoration: none;
+    height: 3rem;
+    transition: all 0.5s cubic-bezier(.58,.07,.54,.74) 0s;
+}
+
+nav li > a:hover {
+    background-color: #888888;
+    height: 4rem;
+    font-size: 3rem;
 }
 
 header {
     display: flex;
     flex-flow: row nowrap;
-    height: 3rem;
+    height: 7rem;
     justify-content: space-between;
 }
 
 header > button {
-    flex: 0 0 3rem;
+    flex: 0 0 7rem;
 }
 
 header > button:hover {
@@ -35,7 +45,7 @@ header > button:active {
 
 header > * {
     text-align: center;
-    font-size: 2rem;
+    font-size: 6rem;
 }
 
 #header-logo {
@@ -44,10 +54,26 @@ header > * {
 }
 
 nav {
+    position: fixed;
+    top: 7rem;
+    width: 33vw;
+    height: calc(100vh - 7rem);
     background-color: #dddddd;
     color: #000000;
+    transition: all 0.75s cubic-bezier(.58,.07,.54,.74) 0s;
+}
+
+.nav-menu-hidden {
+    right: 100vw;
+}
+
+.nav-menu-visible {
+    right: 67vw;
 }
 
 nav > ul {
     list-style-type: none;
+    padding: 1rem;
+    margin: 0%;
+    font-size: 2.5rem;
 }
