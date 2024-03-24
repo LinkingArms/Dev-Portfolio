@@ -1,5 +1,19 @@
 :root {
+    background-color: #eeeeee;
     font-size: 8px;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    --portion: 1.618;
+    --top-division: 7rem;
+    --body: 2rem;
+    --subheader: calc(var(--body) * var(--portion));
+    --header: calc(var(--subheader) * var(--portion));
+    --title: calc(var(--header) * var(--portion));
+}
+
+span.paragraph-indent {
+    display: inline-block;
+    font-size: inherit;
+    margin-left: 4em;
 }
 
 body {
@@ -10,29 +24,29 @@ button {
     all: unset;
 }
 
-nav li > a {
-    color: unset;
-    cursor: pointer;
-    text-decoration: none;
-    height: 3rem;
-    transition: all 0.5s cubic-bezier(.58,.07,.54,.74) 0s;
-}
-
-nav li > a:hover {
-    background-color: #888888;
-    height: 4rem;
-    font-size: 3rem;
-}
-
 header {
     display: flex;
     flex-flow: row nowrap;
-    height: 7rem;
+    position: fixed;
+    top: 0%;
+    height: var(--top-division);
     justify-content: space-between;
+    text-align: center;
+    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+}
+
+.header-nav-menu-hidden {
+    right: 0%;
+    width: 100vw;
+}
+
+.header-nav-menu-visible {
+    right: 0%;
+    width: calc(100% - 33vw);
 }
 
 header > button {
-    flex: 0 0 7rem;
+    flex: 0 0 var(--top-division);
 }
 
 header > button:hover {
@@ -44,7 +58,7 @@ header > button:active {
 }
 
 header > * {
-    text-align: center;
+    text-align: inherit;
     font-size: 6rem;
 }
 
@@ -53,27 +67,117 @@ header > * {
     align-items: center;
 }
 
+#header-fade {
+    position: fixed;
+    z-index: 99;
+    top: var(--top-division);
+    height: calc(var(--top-division) / 2);
+    background-image: linear-gradient(#eeeeeeff, #eeeeee00);
+    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+}
+
 nav {
     position: fixed;
-    top: 7rem;
+    top: 0%;
     width: 33vw;
-    height: calc(100vh - 7rem);
+    height: 100%;
     background-color: #dddddd;
     color: #000000;
-    transition: all 0.75s cubic-bezier(.58,.07,.54,.74) 0s;
+    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
 }
 
 .nav-menu-hidden {
     right: 100vw;
+    left: calc(0vw - 33vw);
 }
 
 .nav-menu-visible {
-    right: 67vw;
+    left: 0vw;
+    right: calc(100vw - 33vw);
+}
+
+nav li > a {
+    display: inline-block;
+    color: unset;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
 }
 
 nav > ul {
     list-style-type: none;
-    padding: 1rem;
+    padding: 0%;
     margin: 0%;
     font-size: 2.5rem;
+}
+
+nav li {
+    padding: 0.5rem;
+    height: 3rem;
+    transition: all 0.5s cubic-bezier(.58,.07,.54,.74) 0s;
+}
+
+nav li:hover {
+    background-color: #888888;
+    height: 3.5rem;
+    font-size: 3rem;
+}
+
+article {
+    margin: 0%;
+    padding: 1rem;
+    position: fixed;
+    overflow-y: scroll;
+    height: calc(100% - var(--top-division) - 2rem);
+    top: var(--top-division);
+    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+}
+
+.article-nav-menu-hidden {
+    right: 0%;
+    width: calc(100vw - 2rem);
+}
+
+.article-nav-menu-visible {
+    right: 0%;
+    width: calc(100% - 33vw - 2rem);
+}
+
+article h1 {
+    font-size: var(--title);
+    text-align: center;
+    margin: 0.5em 0%;
+}
+
+article h2 {
+    font-size: var(--header);
+    margin: 2rem 0%;
+}
+
+article h3 {
+    font-size: var(--subheader);
+}
+
+article p {
+    font-size: var(--body);
+    text-align: justify;
+}
+
+#footer-fade {
+    position: fixed;
+    z-index: 99;
+    bottom: 0%;
+    height: calc(var(--top-division) / 2);
+    background-image: linear-gradient(#eeeeee00, #eeeeeeff);
+    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+}
+
+.footer-nav-menu-hidden {
+    right: 0%;
+    width: 100vw;
+}
+
+.footer-nav-menu-visible {
+    right: 0%;
+    width: calc(100% - 33vw);
 }
