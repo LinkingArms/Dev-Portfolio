@@ -5,8 +5,7 @@
     --portion: 1.618;
     --top-division: 7rem;
     --body: 2rem;
-    --subheader: calc(var(--body) * var(--portion));
-    --header: calc(var(--subheader) * var(--portion));
+    --header: calc(var(--body) * var(--portion));
     --title: calc(var(--header) * var(--portion));
 }
 
@@ -125,16 +124,17 @@ nav li:hover {
 
 article {
     margin: 0%;
-    padding: 1rem;
+    padding: 0rem 1rem 0rem 2.5rem;
     position: fixed;
     overflow-y: scroll;
-    height: calc(100% - var(--top-division) - 2rem);
+    height: calc(100% - var(--top-division));
     top: var(--top-division);
     transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
 }
 
 article::-webkit-scrollbar {
     font-size: 0%;
+    width: 1.5rem;
 }
 
 article::-webkit-scrollbar-track {
@@ -155,27 +155,22 @@ article::-webkit-scrollbar-thumb:hover {
 
 .article-nav-menu-hidden {
     right: 0%;
-    width: calc(100vw - 2rem);
+    width: calc(100vw - 3.5rem);
 }
 
 .article-nav-menu-visible {
     right: 0%;
-    width: calc(100% - 33vw - 2rem);
+    width: calc(100% - 33vw - 3.5rem);
 }
 
 article h1 {
     font-size: var(--title);
-    text-align: center;
-    margin: 0.5em 0%;
+    margin: 0.25em 0%;
 }
 
 article h2 {
     font-size: var(--header);
     margin: 2rem 0%;
-}
-
-article h3 {
-    font-size: var(--subheader);
 }
 
 article p {
