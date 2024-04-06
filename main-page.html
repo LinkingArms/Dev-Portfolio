@@ -10,7 +10,7 @@
 
     <body>
 
-        <header class="header-nav-menu-hidden">
+        <header class="body-nav-menu-hidden">
 
             <button onclick="openMenu('nav-menu')">
                 M
@@ -24,43 +24,13 @@
             
         </header>
         
-        <div id="header-fade" class="header-nav-menu-hidden"></div>
+        <div id="header-fade" class="body-nav-menu-hidden"></div>
 
-        <nav id="nav-menu" class="nav-menu-hidden">
+        <nav id="nav-menu" data-isVisible="false" class="nav-menu-hidden"></nav>
 
-            <ul>
-
-                <li>
-                    <a href>
-                        Temp Page 1
-                    </a>
-                </li>
-
-                <li>
-                    <a href>
-                        Temp Page 2
-                    </a>
-                </li>
-
-                <li>
-                    <a href>
-                        Temp Page 3
-                    </a>
-                </li>
-
-                <li>
-                    <a href>
-                        Temp Page 4
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-        <article data-article="template-article" class="article-nav-menu-hidden"></article>
+        <article data-article="template-article" class="body-nav-menu-hidden"></article>
         
-        <div id="footer-fade" class="footer-nav-menu-hidden"></div>
+        <div id="footer-fade" class="body-nav-menu-hidden"></div>
 
         <script src="site-script.js" async defer></script>
 

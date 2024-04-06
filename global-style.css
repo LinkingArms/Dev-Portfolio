@@ -34,14 +34,14 @@ header {
     transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
 }
 
-.header-nav-menu-hidden {
-    right: 0%;
-    width: 100vw;
-}
-
-.header-nav-menu-visible {
+.body-nav-menu-visible {
     right: 0%;
     width: calc(100% - 33vw);
+}
+
+.body-nav-menu-hidden {
+    right: 0%;
+    width: 100vw;
 }
 
 header > button {
@@ -98,9 +98,7 @@ nav {
 nav li > a {
     display: inline-block;
     color: unset;
-    cursor: pointer;
     text-decoration: none;
-    width: 100%;
 }
 
 nav > ul {
@@ -113,6 +111,7 @@ nav > ul {
 nav li {
     padding: 0.5rem;
     height: 3rem;
+    cursor: pointer;
     transition: all 0.5s cubic-bezier(.58,.07,.54,.74) 0s;
 }
 
@@ -122,14 +121,20 @@ nav li:hover {
     font-size: 3rem;
 }
 
+nav li button {
+    width: 100%;
+}
+
 article {
-    margin: 0%;
-    padding: 0rem 1rem 0rem 2.5rem;
     position: fixed;
     overflow-y: scroll;
     height: calc(100% - var(--top-division));
     top: var(--top-division);
     transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+}
+
+article * {
+    padding: 0rem 1rem 0rem 2.5rem;
 }
 
 article::-webkit-scrollbar {
@@ -151,16 +156,6 @@ article::-webkit-scrollbar-thumb {
 
 article::-webkit-scrollbar-thumb:hover {
     background-color: #bbbbbb;
-}
-
-.article-nav-menu-hidden {
-    right: 0%;
-    width: calc(100vw - 3.5rem);
-}
-
-.article-nav-menu-visible {
-    right: 0%;
-    width: calc(100% - 33vw - 3.5rem);
 }
 
 article h1 {
@@ -185,14 +180,4 @@ article p {
     height: calc(var(--top-division) / 2);
     background-image: linear-gradient(#eeeeee00, #eeeeeeff);
     transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
-}
-
-.footer-nav-menu-hidden {
-    right: 0%;
-    width: 100vw;
-}
-
-.footer-nav-menu-visible {
-    right: 0%;
-    width: calc(100% - 33vw);
 }

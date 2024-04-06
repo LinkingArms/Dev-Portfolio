@@ -1,5 +1,5 @@
 function LoadArticle() {
-  xmlParser = new DOMParser();
+  let xmlParser = new DOMParser();
   fetch(
     `articles/${
       document.getElementsByTagName("article")[0].dataset.article
@@ -12,7 +12,7 @@ function LoadArticle() {
 }
 
 function BuildArticle(articleDoc) {
-  body = document.getElementsByTagName("article")[0];
+  let body = document.getElementsByTagName("article")[0];
   content = Array.from(articleDoc.documentElement.childNodes).filter(
     (node) => node.nodeType == 1
   );
@@ -53,50 +53,57 @@ function LoadArticleList() {
 }
 
 function BuildArticleList(articleList) {
-  menu = document.getElementsByTagName("nav")[0];
+  let menu = document.getElementsByTagName("nav")[0];
   menu.append(document.createElement("ul"));
+  menu = menu.childNodes[0];
   for (const item of articleList.categories) {
-    menu.childNodes[1].append(document.createElement("li"));
+    let listItem = menu.childNodes.length;
+    menu.append(document.createElement("li"));
+    menu.childNodes[listItem].append(document.createElement("button"));
     if (item.content.length == 1) {
-      menu.childNodes[1].childNodes[
-        menu.childNodes[1].childNodes.length - 1
-      ].append(document.createElement("button"));
-      menu.childNodes[1].childNodes[
-        menu.childNodes[1].childNodes.length - 1
-      ].childNodes[0].append(item.content[0].title);
+      menu.childNodes[listItem].childNodes[0].append(item.content[0].title);
     } else {
-        
+      menu.childNodes[listItem].childNodes[0].append(item.name);
+      menu.childNodes[listItem].childNodes[0].onclick = function () {
+        openSubcategory(item.name);
+      };
+      menu.childNodes[listItem].append(document.createElement("ul"));
+      for (const subitem of item.content) {
+        menu.childNodes[listItem].append(document.createElement("li"));
+      }
     }
   }
 }
 
+function openSubcategory(categoryName) {
+  document.getElementById;
+}
+
 function openMenu(elementID) {
-  document.getElementById(elementID).classList.toggle(elementID + "-hidden");
-  document.getElementById(elementID).classList.toggle(elementID + "-visible");
-  document
-    .getElementsByTagName("article")[0]
-    .classList.toggle(`article-${elementID}-hidden`);
-  document
-    .getElementsByTagName("article")[0]
-    .classList.toggle(`article-${elementID}-visible`);
-  document
-    .getElementsByTagName("header")[0]
-    .classList.toggle(`header-${elementID}-hidden`);
-  document
-    .getElementsByTagName("header")[0]
-    .classList.toggle(`header-${elementID}-visible`);
-  document
-    .getElementById("header-fade")
-    .classList.toggle(`header-${elementID}-hidden`);
-  document
-    .getElementById("header-fade")
-    .classList.toggle(`header-${elementID}-visible`);
-  document
-    .getElementById("footer-fade")
-    .classList.toggle(`footer-${elementID}-hidden`);
-  document
-    .getElementById("footer-fade")
-    .classList.toggle(`footer-${elementID}-visible`);
+  let menu = document.getElementById(elementID);
+  menu.classList.toggle(elementID + "-hidden");
+  menu.classList.toggle(elementID + "-visible");
+  for (
+    let i = 0;
+    i < document.getElementsByTagName("body")[0].childNodes.length;
+    i++
+  ) {
+    let bodyElement = document.getElementsByTagName("body")[0].childNodes[i];
+    if (bodyElement.nodeName.charAt(0) == "#") {
+      continue;
+    }
+    if (
+      bodyElement.classList.contains(
+        `body-${elementID}-${
+          menu.dataset.isVisible === "true" ? "visible" : "hidden"
+        }`
+      )
+    ) {
+      bodyElement.classList.toggle(`body-${elementID}-hidden`);
+      bodyElement.classList.toggle(`body-${elementID}-visible`);
+    }
+  }
+  menu.dataset.isVisible = menu.dataset.isVisible === "true" ? "false" : "true";
 }
 
 LoadArticle();
