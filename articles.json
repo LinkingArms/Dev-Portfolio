@@ -21,6 +21,19 @@
                     "file":"test-article-b"
                 }
             ]
+        },
+        {
+            "name":"Testing 2",
+            "content":[
+                {
+                    "title":"Tester_A",
+                    "file":"test-article-a"
+                },
+                {
+                    "title":"Tester_B",
+                    "file":"test-article-b"
+                }
+            ]
         }
     ]
 }

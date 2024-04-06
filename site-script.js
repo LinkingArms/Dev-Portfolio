@@ -59,24 +59,38 @@ function BuildArticleList(articleList) {
   for (const item of articleList.categories) {
     let listItem = menu.childNodes.length;
     menu.append(document.createElement("li"));
-    menu.childNodes[listItem].append(document.createElement("button"));
+    let menuItem = menu.childNodes[listItem];
     if (item.content.length == 1) {
-      menu.childNodes[listItem].childNodes[0].append(item.content[0].title);
+      menuItem.append(document.createElement("button"));
+      menuItem.childNodes[0].append(item.content[0].title);
+      menuItem.id = `${item.content[0].title}-head`;
     } else {
-      menu.childNodes[listItem].childNodes[0].append(item.name);
-      menu.childNodes[listItem].childNodes[0].onclick = function () {
-        openSubcategory(item.name);
+      menuItem.append(document.createElement("div"));
+      menuItem = menuItem.childNodes[0];
+      menuItem.append(document.createElement("button"));
+      menuItem.childNodes[0].append(item.name);
+      menuItem.id = `${item.name}-head`;
+      menuItem.childNodes[0].onclick = function () {
+        openSubcategory(`${item.name}-head`);
       };
-      menu.childNodes[listItem].append(document.createElement("ul"));
+      menuItem.classList.add("submenu-hidden");
+      menuItem.append(document.createElement("ul"));
+      let menuList = menuItem.childNodes[1];
       for (const subitem of item.content) {
-        menu.childNodes[listItem].append(document.createElement("li"));
+        let menuListItem = menuList.childNodes.length;
+        menuList.append(document.createElement("li"));
+        menuList.childNodes[menuListItem].append(
+          document.createElement("button")
+        );
+        menuList.childNodes[menuListItem].childNodes[0].append(subitem.title);
       }
     }
   }
 }
 
 function openSubcategory(categoryName) {
-  document.getElementById;
+  document.getElementById(categoryName).classList.toggle("submenu-hidden");
+  document.getElementById(categoryName).classList.toggle("submenu-visible");
 }
 
 function openMenu(elementID) {

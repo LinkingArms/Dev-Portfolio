@@ -101,7 +101,7 @@ nav li > a {
     text-decoration: none;
 }
 
-nav > ul {
+nav ul {
     list-style-type: none;
     padding: 0%;
     margin: 0%;
@@ -115,6 +115,21 @@ nav li {
     transition: all 0.5s cubic-bezier(.58,.07,.54,.74) 0s;
 }
 
+nav li ul {
+    padding: 0.75rem 0rem;
+    margin: -0.5rem;
+    height: auto;
+    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+}
+
+nav li div {
+    height: fit-content;
+}
+
+nav li ul li {
+    padding-left: 2rem;
+}
+
 nav li:hover {
     background-color: #888888;
     height: 3.5rem;
@@ -123,6 +138,19 @@ nav li:hover {
 
 nav li button {
     width: 100%;
+}
+
+div.submenu-hidden {
+    height: fit-content;
+}
+
+div.submenu-visible {
+    display: inline;
+}
+
+div.submenu-hidden ul {
+    height: 0;
+    opacity: 0%;
 }
 
 article {
