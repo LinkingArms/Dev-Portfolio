@@ -13,6 +13,9 @@ function LoadArticle() {
 
 function BuildArticle(articleDoc) {
   let body = document.getElementsByTagName("article")[0];
+  while (body.firstChild) {
+    body.removeChild(body.lastChild);
+  }
   content = Array.from(articleDoc.documentElement.childNodes).filter(
     (node) => node.nodeType == 1
   );
@@ -64,24 +67,30 @@ function BuildArticleList(articleList) {
       menuItem.append(document.createElement("button"));
       menuItem.childNodes[0].append(item.content[0].title);
       menuItem.id = `${item.content[0].title}-head`;
+      menuItem.onclick = function () {
+        changeArticle(item.content[0].file);
+      };
     } else {
-      menuItem.append(document.createElement("div"));
-      menuItem = menuItem.childNodes[0];
       menuItem.append(document.createElement("button"));
       menuItem.childNodes[0].append(item.name);
-      menuItem.id = `${item.name}-head`;
       menuItem.childNodes[0].onclick = function () {
         openSubcategory(`${item.name}-head`);
       };
-      menuItem.classList.add("submenu-hidden");
+      menu.append(document.createElement("li"));
+      menuItem = menu.childNodes[listItem + 1];
       menuItem.append(document.createElement("ul"));
-      let menuList = menuItem.childNodes[1];
+      menuItem.id = `${item.name}-head`;
+      menuItem.classList.add("submenu-hidden");
+      let menuList = menuItem.childNodes[0];
       for (const subitem of item.content) {
         let menuListItem = menuList.childNodes.length;
         menuList.append(document.createElement("li"));
         menuList.childNodes[menuListItem].append(
           document.createElement("button")
         );
+        menuList.childNodes[menuListItem].childNodes[0].onclick = function () {
+          changeArticle(subitem.file);
+        };
         menuList.childNodes[menuListItem].childNodes[0].append(subitem.title);
       }
     }
@@ -91,6 +100,11 @@ function BuildArticleList(articleList) {
 function openSubcategory(categoryName) {
   document.getElementById(categoryName).classList.toggle("submenu-hidden");
   document.getElementById(categoryName).classList.toggle("submenu-visible");
+}
+
+function changeArticle(articleFile) {
+  document.getElementsByTagName("article")[0].dataset.article = articleFile;
+  LoadArticle();
 }
 
 function openMenu(elementID) {

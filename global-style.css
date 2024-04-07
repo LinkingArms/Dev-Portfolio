@@ -118,12 +118,6 @@ nav li {
 nav li ul {
     padding: 0.75rem 0rem;
     margin: -0.5rem;
-    height: auto;
-    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
-}
-
-nav li div {
-    height: fit-content;
 }
 
 nav li ul li {
@@ -140,17 +134,25 @@ nav li button {
     width: 100%;
 }
 
-div.submenu-hidden {
-    height: fit-content;
+@keyframes collapse {
+    from {
+        display: inline;
+        opacity: 1;
+        height: fit-content;
+    }
+    to {
+        display: none;
+        opacity: 0;
+        height: 0%;
+    }
 }
 
-div.submenu-visible {
-    display: inline;
+li.submenu-hidden {
+    animation: collapse 1s cubic-bezier(.25,0,.25,1.05) 0.25s 0 reverse both;
 }
 
-div.submenu-hidden ul {
-    height: 0;
-    opacity: 0%;
+li.submenu-visible {
+    animation: collapse 1s cubic-bezier(.25,0,.25,1.05) 0.25s 0 normal both;
 }
 
 article {
