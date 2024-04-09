@@ -3,26 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <meta name="description" content="">
+        <meta name="description" content>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="global-style.css">
     </head>
 
     <body>
 
-        <header>
+        <header class="body-nav-menu-hidden">
 
-            <button id="nav-menu">
+            <button onclick="openMenu('nav-menu')">
                 M
             </button>
             <div id="header-logo">
                 LOGO
             </div>
-            <button id="theme">
+            <button>
                 T
             </button>
-
+            
         </header>
         
+        <div id="header-fade" class="body-nav-menu-hidden"></div>
+
+        <nav id="nav-menu" data-isVisible="false" class="nav-menu-hidden"></nav>
+
+        <article data-article="template-article" class="body-nav-menu-hidden"></article>
+        
+        <div id="footer-fade" class="body-nav-menu-hidden"></div>
+
+        <script src="site-script.js" async defer></script>
+
     </body>
 </html>
