@@ -1,213 +1,236 @@
 :root {
-    background-color: #eeeeee;
-    font-size: 8px;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-    --portion: 1.618;
-    --top-division: 7rem;
-    --body: 2rem;
-    --header: calc(var(--body) * var(--portion));
-    --title: calc(var(--header) * var(--portion));
+  font-size: 8px;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
+    AppleGothic, sans-serif;
+  --portion: 1.618;
+  --top-division: 7rem;
+  --body: 2rem;
+  --header: calc(var(--body) * var(--portion));
+  --title: calc(var(--header) * var(--portion));
+}
+
+.light {
+  --background-fill: #eeeeee;
+  --background-outline: #eeeeee;
+  --header-fill: #eeeeee;
+  --header-outline: #eeeeee;
+  --header-button-hover-fill: #dddddd;
+  --header-button-hover-outline: #dddddd;
+  --header-button-active-fill: #888888;
+  --header-button-active-outline: #888888;
+  --menu-fill: #dddddd;
+  --menu-outline: #dddddd;
+  --menu-button-fill: #dddddd;
+  --menu-button-outline: #dddddd;
+  --menu-button-hover-fill: #888888;
+  --menu-button-hover-outline: #888888;
 }
 
 span.paragraph-indent {
-    display: inline-block;
-    font-size: inherit;
-    margin-left: 4em;
+  display: inline-block;
+  font-size: inherit;
+  margin-left: 4em;
 }
 
 body {
-    margin: 0%;
+  margin: 0%;
+  background-color: var(--background-fill);
 }
 
 button {
-    all: unset;
+  all: unset;
 }
 
 header {
-    display: flex;
-    flex-flow: row nowrap;
-    position: fixed;
-    top: 0%;
-    height: var(--top-division);
-    justify-content: space-between;
-    text-align: center;
-    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+  display: flex;
+  flex-flow: row nowrap;
+  position: fixed;
+  top: 0%;
+  height: var(--top-division);
+  justify-content: space-between;
+  text-align: center;
+  transition: all 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0s;
 }
 
 .body-nav-menu-visible {
-    right: 0%;
-    width: calc(100% - 33vw);
+  right: 0%;
+  width: calc(100% - 33vw);
 }
 
 .body-nav-menu-hidden {
-    right: 0%;
-    width: 100vw;
+  right: 0%;
+  width: 100vw;
 }
 
 header > button {
-    flex: 0 0 var(--top-division);
+  flex: 0 0 var(--top-division);
 }
 
 header > button:hover {
-    background-color: #bbbbbb;
+  background-color: var(--header-button-hover-fill);
 }
 
 header > button:active {
-    background-color: #888888;
+  background-color: var(--header-button-active-fill);
 }
 
 header > * {
-    text-align: inherit;
-    font-size: 6rem;
+  text-align: inherit;
+  font-size: 6rem;
 }
 
 #header-logo {
-    display: grid;
-    align-items: center;
+  display: grid;
+  align-items: center;
 }
 
 #header-fade {
-    position: fixed;
-    z-index: 99;
-    top: var(--top-division);
-    height: calc(var(--top-division) / 2);
-    background-image: linear-gradient(#eeeeeeff, #eeeeee00);
-    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+  position: fixed;
+  z-index: 99;
+  top: var(--top-division);
+  height: calc(var(--top-division) / 2);
+  background-image: linear-gradient(
+    color-mix(in srgb, var(--background-fill) 100%, transparent),
+    color-mix(in srgb, var(--background-fill) 0%, transparent)
+  );  transition: all 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0s;
 }
 
 nav {
-    position: fixed;
-    top: 0%;
-    width: 33vw;
-    height: 100%;
-    background-color: #dddddd;
-    color: #000000;
-    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+  position: fixed;
+  top: 0%;
+  width: 33vw;
+  height: 100%;
+  background-color: var(--menu-fill);
+  color: #000000;
+  transition: all 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0s;
 }
 
 .nav-menu-hidden {
-    right: 100vw;
-    left: calc(0vw - 33vw);
+  right: 100vw;
+  left: calc(0vw - 33vw);
 }
 
 .nav-menu-visible {
-    left: 0vw;
-    right: calc(100vw - 33vw);
+  left: 0vw;
+  right: calc(100vw - 33vw);
 }
 
 nav li > a {
-    display: inline-block;
-    color: unset;
-    text-decoration: none;
+  display: inline-block;
+  color: unset;
+  text-decoration: none;
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0%;
-    margin: 0%;
-    font-size: 2.5rem;
+  list-style-type: none;
+  padding: 0%;
+  margin: 0%;
+  font-size: 2.5rem;
 }
 
 nav li {
-    padding: 0.5rem;
-    height: 3rem;
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(.58,.07,.54,.74) 0s;
+  padding: 0.5rem;
+  height: 3rem;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.58, 0.07, 0.54, 0.74) 0s;
 }
 
 nav li ul {
-    padding: 0.75rem 0rem;
-    margin: -0.5rem;
+  padding: 0.75rem 0rem;
+  margin: -0.5rem;
 }
 
 nav li ul li {
-    padding-left: 2rem;
+  padding-left: 2rem;
 }
 
 nav li:hover {
-    background-color: #888888;
-    height: 3.5rem;
-    font-size: 3rem;
+  background-color: var(--menu-button-hover-fill);
+  height: 3.5rem;
+  font-size: 3rem;
 }
 
 nav li button {
-    width: 100%;
+  width: 100%;
 }
 
 @keyframes collapse {
-    from {
-        display: inline;
-        opacity: 1;
-        height: fit-content;
-    }
-    to {
-        display: none;
-        opacity: 0;
-        height: 0%;
-    }
+  from {
+    display: inline;
+    opacity: 1;
+    height: fit-content;
+  }
+  to {
+    display: none;
+    opacity: 0;
+    height: 0%;
+  }
 }
 
 li.submenu-hidden {
-    animation: collapse 1s cubic-bezier(.25,0,.25,1.05) 0.25s 0 reverse both;
+  animation: collapse 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0.25s 0 reverse both;
 }
 
 li.submenu-visible {
-    animation: collapse 1s cubic-bezier(.25,0,.25,1.05) 0.25s 0 normal both;
+  animation: collapse 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0.25s 0 normal both;
 }
 
 article {
-    position: fixed;
-    overflow-y: scroll;
-    height: calc(100% - var(--top-division));
-    top: var(--top-division);
-    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+  position: fixed;
+  overflow-y: scroll;
+  height: calc(100% - var(--top-division));
+  top: var(--top-division);
+  transition: all 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0s;
 }
 
 article * {
-    padding: 0rem 1rem 0rem 2.5rem;
+  padding: 0rem 1rem 0rem 2.5rem;
 }
 
 article::-webkit-scrollbar {
-    font-size: 0%;
-    width: 1.5rem;
+  font-size: 0%;
+  width: 1.5rem;
 }
 
 article::-webkit-scrollbar-track {
-    background-color: #eeeeee;
+  background-color: var(--background-fill);
 }
 
 article::-webkit-scrollbar-button {
-    height: 0%;
+  height: 0%;
 }
 
 article::-webkit-scrollbar-thumb {
-    background-color: #eeeeee;
+  background-color: var(--background-fill);
 }
 
 article::-webkit-scrollbar-thumb:hover {
-    background-color: #bbbbbb;
+  background-color: #bbbbbb;
 }
 
 article h1 {
-    font-size: var(--title);
-    margin: 0.25em 0%;
+  font-size: var(--title);
+  margin: 0.25em 0%;
 }
 
 article h2 {
-    font-size: var(--header);
-    margin: 2rem 0%;
+  font-size: var(--header);
+  margin: 2rem 0%;
 }
 
 article p {
-    font-size: var(--body);
-    text-align: justify;
+  font-size: var(--body);
+  text-align: justify;
 }
 
 #footer-fade {
-    position: fixed;
-    z-index: 99;
-    bottom: 0%;
-    height: calc(var(--top-division) / 2);
-    background-image: linear-gradient(#eeeeee00, #eeeeeeff);
-    transition: all 1s cubic-bezier(.25,0,.25,1.05) 0s;
+  position: fixed;
+  z-index: 99;
+  bottom: 0%;
+  height: calc(var(--top-division) / 2);
+  background-image: linear-gradient(
+    color-mix(in srgb, var(--background-fill) 0%, transparent),
+    color-mix(in srgb, var(--background-fill) 100%, transparent)
+  );
+  transition: all 1s cubic-bezier(0.25, 0, 0.25, 1.05) 0s;
 }
